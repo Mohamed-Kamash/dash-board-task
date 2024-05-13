@@ -1,4 +1,30 @@
 /* You can add global styles to this file, and also import other style files */
 
-html, body { height: 100%; }
-body { margin: 0; font-family: Roboto, "Helvetica Neue", sans-serif; }
+
+
+body {
+    background-color: #537895;
+}
+
+
+.pointer{
+    cursor: pointer;
+}
+
+#tabHeader{
+    display: inline-block;
+    position: relative;
+    background: -webkit-linear-gradient(#2c2c2c, #c2c2c2);
+    background-clip: text;
+    color: transparent;
+}
+#tabHeader::after{
+    content: "";
+    position: absolute;
+    height: 2px;
+    width: 250px;
+    background-image: linear-gradient(to right, #4c4c4c, #2f2f2f, #6e6e6e, #acacac, #ffe1e1);
+    bottom: 0px;
+    left:0px;
+    border-radius: 5px;
+}

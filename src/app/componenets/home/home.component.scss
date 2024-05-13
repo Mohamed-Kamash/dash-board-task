@@ -1,11 +1,21 @@
 :host{
     min-height: 100vh;
     display: flex;
-    justify-content: center;
-    align-items: center;
+    flex-direction: column;
+    justify-content: space-between;
 }
 
 .result{
     overflow: auto;
     max-height: 40vh;
 }
+
+.hoverEffect{
+    transition: all 0.4s ;
+}
+.col-md-4:hover .hoverEffect{
+    transform: scale(1.05);
+    box-shadow: 5px 10px 10px rgba(0, 0, 0, 0.50);
+}
+
+

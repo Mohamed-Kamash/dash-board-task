@@ -3,15 +3,14 @@ import { CommonModule } from '@angular/common';
 import { GetUsersService } from 'src/app/services/get-users.service';
 import { MatPaginatorModule, PageEvent } from '@angular/material/paginator';
 import { RouterLink } from '@angular/router';
-import { FormsModule } from '@angular/forms';
-import { SearchPipe } from 'src/app/pipes/search.pipe';
 import { UserData } from 'src/app/interfaces/user-data';
+import { HeaderComponent } from '../header/header.component';
 
 
 @Component({
   selector: 'app-home',
   standalone: true,
-  imports: [CommonModule, MatPaginatorModule , RouterLink ,FormsModule , SearchPipe],
+  imports: [CommonModule, MatPaginatorModule , RouterLink , HeaderComponent],
   templateUrl: './home.component.html',
   styleUrls: ['./home.component.scss'],
 })
@@ -19,9 +18,6 @@ export class HomeComponent implements OnInit {
   constructor(private _GetUsersService: GetUsersService) {}
 
   usersPage!: UserData[];
-  usersPage2!:UserData[];
-  allUsersList!:UserData[]; //page 1 + 2
-  searchTerm!:string;
 
   // pagination properties
   totalItems!: number;
@@ -40,13 +36,6 @@ export class HomeComponent implements OnInit {
         console.log(err);
       },
     });
-
-    this._GetUsersService.getPage2().subscribe({
-      next:(response)=>{
-        this.usersPage2 = response.data
-        this.allUsersList = this.usersPage.concat(this.usersPage2)
-      }
-    })
   }
 
 

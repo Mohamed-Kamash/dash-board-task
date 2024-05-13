@@ -20,7 +20,7 @@ export class LoadingInterceptor implements HttpInterceptor {
       finalize(() => {
         setTimeout(() => {
           this._NgxSpinnerService.hide();
-        }, 400);
+        }, 500);
       })
     );
   }

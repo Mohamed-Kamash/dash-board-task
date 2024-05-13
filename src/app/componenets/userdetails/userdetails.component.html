@@ -1,17 +1,18 @@
-<div class="container bg-danger">
-
-    <a class="effect effectX" [routerLink]="['/home']">HOME</a>
-
-    <div class="row">
-        <div class="col-md-4">
-            <img [src]="usersData.avatar" [alt]="usersData.first_name" class="w-50">
-        </div>
-
-        <div class="col-md-8">
-            <p>User ID : {{usersData.id}}</p>
-            <p>First Name : {{usersData.first_name}}</p>
-            <p>Last Name : {{usersData.last_name}}</p>
-            <p>E-Mail : {{usersData.email}}</p>
-        </div>
+<div class="container">
+  <div class="text-center text-white">
+    <h2>Single User Details</h2>
+  </div>
+  <div class="row bg-body-tertiary p-5 rounded-4 justify-content-center">
+    <div class="col-md-4 p-0 text-center">
+      <img [src]="usersData.avatar" [alt]="usersData.first_name" class="w-75" />
     </div>
+
+    <div class="col-md-8 p-0 d-flex flex-column justify-content-around">
+      <p class="fs-3">User ID : {{ usersData.id }}</p>
+      <h3 class="fs-3">First Name : {{ usersData.first_name }}</h3>
+      <h3 class="fs-3">Last Name : {{ usersData.last_name }}</h3>
+      <h4 class="fs-3">E-Mail : {{ usersData.email }}</h4>
+      <a class="effect effectX w-50 bg-danger" [routerLink]="['/home']">HOME</a>
+    </div>
+  </div>
 </div>
