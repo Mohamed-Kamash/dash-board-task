@@ -1,0 +1,68 @@
+<div class="container">
+
+  <!-- Search Input -->
+  <div class="position-relative mx-auto w-50 mb-4">
+    <label for="Search">Find User By ID :</label>
+    <input
+      id="Search"
+      type="search"
+      class="form-control w-100 mx-auto mb-1"
+      [(ngModel)]="searchTerm"
+    />
+
+    <div
+      class="result position-absolute start-0 end-0 text-center z-1 bg-white"
+      *ngIf="searchTerm"
+    >
+      <div
+        *ngFor="let searchResult of allUsersList | search : searchTerm"
+        [routerLink]="['/details', searchResult.id]"
+        class="d-flex my-1 border p-1 pointerEvent"
+      >
+        <img
+          [src]="searchResult.avatar"
+          [alt]="searchResult.first_name"
+          width="50"
+          height="50"
+        />
+        <div
+          class="d-flex flex-column justify-content-center align-items-start ps-2"
+        >
+          <span>{{ searchResult.id }}</span>
+          <span
+            >{{ searchResult.first_name }} {{ searchResult.last_name }}
+          </span>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <div class="row">
+    <div *ngFor="let user of usersPage" class="col-md-4 p-2 bg-primary">
+      <div class="bg-danger d-flex" [routerLink]="['/details', user.id]">
+        <div>
+          <img
+            [src]="user.avatar"
+            [alt]="user.first_name"
+            height="150"
+            width="150"
+          />
+        </div>
+        <div>
+          <p>ID : {{ user.id }}</p>
+          <p>Name : {{ user.first_name }} {{ user.last_name }}</p>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <div class="d-flex justify-content-center align-items-center mt-5">
+    <mat-paginator
+      [length]="totalItems"
+      [pageSize]="pageSize"
+      [pageIndex]="currentPage - 1"
+      (page)="pageChanged($event)"
+    >
+    </mat-paginator>
+  </div>
+</div>
